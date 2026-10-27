@@ -81,14 +81,21 @@ h2 { font-weight: 500; letter-spacing: -.06em; }
 .bulletin-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin: 42px 0 30px 18%; }
 .bulletin h2 { line-height: 1.4; }
 .bulletin-heading > p { margin: 0 0 8px; color: var(--muted); font-size: 16px; }
-.bulletin-list { margin-left: 18%; border-top: 1px solid #c8bbae; }
-.bulletin-issue { border-bottom: 1px solid #c8bbae; }
-.bulletin-issue summary { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 4px; color: var(--ink); cursor: pointer; list-style: none; font-size: 17px; font-weight: 500; }
-.bulletin-issue summary::-webkit-details-marker { display: none; }
-.issue-pages { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 14px; font-weight: 400; }
+.bulletin-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-left: 18%; }
+.bulletin-card { min-width: 0; background: #fffdf9; border: 1px solid #d8cec3; }
+.bulletin-card summary { display: flex; flex-direction: column; color: var(--ink); cursor: pointer; list-style: none; }
+.bulletin-card summary::-webkit-details-marker { display: none; }
+.bulletin-cover { display: block; width: 100%; aspect-ratio: 1414 / 2000; object-fit: cover; object-position: top; background: white; }
+.bulletin-date { padding: 15px 14px 3px; font-size: 15px; font-weight: 600; }
+.issue-pages { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 0 14px 14px; color: var(--muted); font-size: 13px; font-weight: 400; }
 .issue-pages b { color: var(--accent); font-size: 20px; font-weight: 400; transition: transform .2s ease; }
-.bulletin-issue[open] .issue-pages b { transform: rotate(45deg); }
-.bulletin-pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding: 0 0 24px; }
+.bulletin-card[open] { grid-column: 1 / -1; padding: 18px; }
+.bulletin-card[open] .bulletin-cover { display: none; }
+.bulletin-card[open] summary { flex-direction: row; }
+.bulletin-card[open] .bulletin-date { padding: 0 0 14px; }
+.bulletin-card[open] .issue-pages { margin-left: auto; padding: 0 0 14px; }
+.bulletin-card[open] .issue-pages b { transform: rotate(45deg); }
+.bulletin-pages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .bulletin-pages img { display: block; width: 100%; height: auto; background: white; box-shadow: 0 6px 24px #30241f12; }
 .site-footer { min-height: 170px; padding: 38px 6.2%; display: flex; align-items: center; justify-content: space-between; gap: 25px; background: var(--ink); color: var(--cream); border-radius: 0 0 18px 18px; }
 .site-footer .wordmark { color: var(--cream); }
@@ -132,9 +139,12 @@ h2 { font-weight: 500; letter-spacing: -.06em; }
   .bulletin-heading { display: block; margin: 34px 0 24px; }
   .bulletin-heading > p { margin-top: 12px; line-height: 1.8; }
   .bulletin h2 { font-size: 36px; }
-  .bulletin-list { margin-left: 0; }
-  .bulletin-issue summary { font-size: 15px; }
-  .issue-pages { font-size: 12px; }
+  .bulletin-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-left: 0; }
+  .bulletin-date { padding: 12px 10px 3px; font-size: 13px; }
+  .issue-pages { padding: 0 10px 12px; font-size: 12px; }
+  .bulletin-card[open] { padding: 12px; }
+  .bulletin-card[open] .bulletin-date { padding: 0 0 12px; }
+  .bulletin-card[open] .issue-pages { padding: 0 0 12px; }
   .bulletin-pages { grid-template-columns: 1fr; gap: 12px; }
   .site-footer { min-height: 0; align-items: flex-start; flex-direction: column; padding: 32px 24px; border-radius: 0; gap: 13px; }
   .site-footer p { margin: 0; }
