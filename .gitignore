@@ -1,0 +1,3 @@
+# Source documents and design references stay local; never publish them with the site.
+/Docs/
+.DS_Store
